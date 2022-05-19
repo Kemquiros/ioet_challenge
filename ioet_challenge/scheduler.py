@@ -22,6 +22,7 @@ class ACME_Scheduler:
         return salary
     
     def select_slot(self, h_init, m_init):
+        '''Select one slot according to the hour:minutes'''
         slot = None
         if (h_init == 0 and m_init >= 1) or (h_init > 0 and m_init >= 0 and h_init<=8 and m_init<=59) or (h_init == 9 and m_init == 0):
             slot = 1
@@ -32,6 +33,7 @@ class ACME_Scheduler:
         return slot
 
     def calc_salary_slot(self, d, h_init, m_init, h_finish, m_finish):
+        '''Calculates the salary for each time slot'''
         salary = 0
         slot_init = self.select_slot(h_init, m_init)
         slot_finish = self.select_slot(h_finish, m_finish)
@@ -62,6 +64,7 @@ class ACME_Scheduler:
 
 
     def calc_salary(self, worker):
+        '''For each worker calculates the salary'''
         salary = 0
         for day in weekdays:
             for slot in worker.work[day]:
@@ -73,9 +76,7 @@ class ACME_Scheduler:
         return salary
 
     def calc_salaries(self):
+        '''For every worker calculates the salary'''
         for worker_name in self.workers.keys():
             worker = self.workers[worker_name]
             worker.salary = self.calc_salary(worker)
-
-    def hello_world(self) -> str:
-        return "Hello World!"
