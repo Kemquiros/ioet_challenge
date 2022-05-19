@@ -29,9 +29,5 @@ class ACME_TEST(unittest.TestCase):
         acme_scheduler = ACME_Scheduler(None) 
         self.assertEqual(acme_scheduler.calc_salary_slot("MO",3,40,6,40),3*25)
 
-    def test_hello_world(self):
-        acme_scheduler = ACME_Scheduler(None) 
-        self.assertEqual(acme_scheduler.hello_world(), "Hello World!")
-
 if __name__ == '__main__':
     unittest.main()
